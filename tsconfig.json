@@ -1,0 +1,26 @@
+{
+    "compilerOptions": {
+        "allowUmdGlobalAccess": true,
+        "alwaysStrict": true,
+        "noImplicitOverride": true,
+        "noImplicitReturns": true,
+        "noImplicitThis": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "strictBindCallApply": true,
+        "strictFunctionTypes": true,
+        "strictNullChecks": true,
+        "strictPropertyInitialization": true,
+        "jsx": "react-jsx",
+        "target": "es2016",
+        "sourceMap": true,
+        "outDir": "./build",
+        "allowSyntheticDefaultImports": true,
+        "forceConsistentCasingInFileNames": true,
+        "noEmit": true,
+        "moduleResolution": "node",
+        "resolveJsonModule": true
+    },
+    "include": ["**/*.ts", "**/*.tsx"],
+    "exclude": ["node_modules", "dist"]
+}
