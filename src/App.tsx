@@ -4,6 +4,7 @@ import { Route, Routes } from 'react-router-dom';
 import NavBar from './components/navigation/NavBar';
 import Home from './components/home/Home';
 import UserProfile from './components/profile/UserProfile';
+import ProtectedRoute from './auth/ProtectedRoute';
 
 
 
@@ -21,7 +22,13 @@ function App() {
       <div className="container flex-grow-1">
         <Routes>
           <Route path="/" element={<Home/>} />
-          <Route path="profile" element={<UserProfile/>} />
+          <Route path='profile' element={
+            <ProtectedRoute>
+              <UserProfile/>
+            </ProtectedRoute>
+          }/>
+            
+          
         </Routes>
       </div>
     </div>
