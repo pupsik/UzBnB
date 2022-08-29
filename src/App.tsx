@@ -21,7 +21,7 @@ function App() {
       <div className="container flex-grow-1">
         <Routes>
           <Route path="/" element={<Home/>} />
-          <Route path="/profile" element={<UserProfile/>} />
+          <Route path="profile" element={<UserProfile/>} />
         </Routes>
       </div>
     </div>
