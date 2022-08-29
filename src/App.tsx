@@ -6,32 +6,30 @@ import Home from './components/home/Home';
 import UserProfile from './components/profile/UserProfile';
 import ProtectedRoute from './auth/ProtectedRoute';
 
-
-
 function App() {
+    const { isLoading } = useAuth0();
 
-  const { isLoading } = useAuth0();
-
-  if (isLoading) {
-    return <div>Loading!</div>;
-  }
+    if (isLoading) {
+        return <div>Loading!</div>;
+    }
 
     return (
-      <div id="app" className="d-flex flex-column h-100">
-      <NavBar />
-      <div className="container flex-grow-1">
-        <Routes>
-          <Route path="/" element={<Home/>} />
-          <Route path='profile' element={
-            <ProtectedRoute>
-              <UserProfile/>
-            </ProtectedRoute>
-          }/>
-            
-          
-        </Routes>
-      </div>
-    </div>
+        <div id="app" className="d-flex flex-column h-100">
+            <NavBar />
+            <div className="container flex-grow-1">
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route
+                        path="profile"
+                        element={
+                            <ProtectedRoute>
+                                <UserProfile />
+                            </ProtectedRoute>
+                        }
+                    />
+                </Routes>
+            </div>
+        </div>
     );
 }
 
