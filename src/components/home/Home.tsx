@@ -1,14 +1,13 @@
 import EnterCard from './EnterCard';
-import { HomeContainer } from './styles/HomeContainerStyles';
-import img from './styles/images/cool-background.png';
+import HomeContainer from './HomeContainer';
+import img from './images/cool-background.png';
 
 const Home = () => {
-    return(
+    return (
         <HomeContainer img={img}>
-            <EnterCard/>
+            <EnterCard />
         </HomeContainer>
     );
 };
-
 
 export default Home;

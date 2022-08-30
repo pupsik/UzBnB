@@ -1,11 +1,16 @@
-import * as Styled from './styles/HomeContainerStyles';
+import * as Styled from './HomeContainer.styles';
 
 interface HomeContainerProps {
     img: string;
+    children: React.ReactNode;
 }
 
-const HomeContainer = ({ img }: HomeContainerProps): JSX.Element => {
-    return <Styled.HomeContainer img={img} />;
+const HomeContainer = (props: HomeContainerProps): JSX.Element => {
+    return (
+        <Styled.HomeContainer img={props.img}>
+            {props.children}
+        </Styled.HomeContainer>
+    );
 };
 
 export default HomeContainer;

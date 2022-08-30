@@ -1,6 +1,5 @@
 import styled from 'styled-components';
-import { Card } from '@mui/material';
-
+import { Card, Typography } from '@mui/material';
 
 export const EnterCard = styled(Card)`
     position: absolute;
@@ -12,7 +11,8 @@ export const EnterCard = styled(Card)`
     &.css-fky5tw-MuiPaper-root-MuiCard-root {
         border-radius: 50px 20px;
     }
-    
 `;
 
-
+export const EnterTitleTypography = styled(Typography)`
+    color: #664986;
+`;

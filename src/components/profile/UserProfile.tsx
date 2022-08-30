@@ -11,7 +11,7 @@ const UserProfile = () => {
     return (
         <div>
             <div className="row align-items-center profile-header">
-                <LogoutButton/>
+                <LogoutButton />
                 <div className="col-md-2 mb-3">
                     <img
                         src={picture}
