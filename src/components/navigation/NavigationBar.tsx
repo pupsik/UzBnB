@@ -2,7 +2,7 @@ import UnauthNav from './UnauthNav';
 import AuthNav from './AuthNav';
 import { useAuth0 } from '@auth0/auth0-react';
 
-const NavBar = () => {
+const NavigationBar = () => {
     const { isAuthenticated } = useAuth0();
 
     return (
@@ -17,4 +17,4 @@ const NavBar = () => {
     );
 };
 
-export default NavBar;
+export default NavigationBar;

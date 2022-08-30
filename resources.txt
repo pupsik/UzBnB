@@ -1,0 +1,4 @@
+1. Full page background image: https://css-tricks.com/perfect-full-page-background-image/
+2. Authn Tutorial: https://auth0.com/blog/complete-guide-to-react-user-authentication/#Add-User-Authentication
+3. Material Design Web: https://mui.com/x/react-data-grid/layout/
+4. Styled Components best practices: https://www.robinwieruch.de/styled-components/
