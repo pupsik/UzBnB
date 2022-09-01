@@ -1,5 +1,5 @@
 import { useAuth0 } from '@auth0/auth0-react';
-import LogoutButton from '../auth/LogoutButton';
+import ButtonAppBar from '../toolbar/ToolBar';
 
 const UserProfile = () => {
     const { user } = useAuth0();
@@ -11,7 +11,7 @@ const UserProfile = () => {
     return (
         <div>
             <div className="row align-items-center profile-header">
-                <LogoutButton />
+                <ButtonAppBar />
                 <div className="col-md-2 mb-3">
                     <img
                         src={picture}
