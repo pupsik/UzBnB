@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { Box, Typography } from '@mui/material';
 import ButtonAppBar from '../toolbar/ToolBar';
 import Stack from '@mui/material/Stack';
-import HomeContainer from './HomeContainer';
+import MainContainer from './MainContainer';
 import img from './images/summer_doodle.jpg';
 import Button from '@mui/material/Button';
 
@@ -14,7 +14,7 @@ const StyledGreetBox = styled(Box)`
 
 const Home = () => {
     return (
-        <HomeContainer img={img}>
+        <MainContainer img={img}>
             <ButtonAppBar />
             <StyledGreetBox component="div">
                 <Typography variant="h1" fontWeight={600}>
@@ -37,7 +37,7 @@ const Home = () => {
                     </Stack>
                 </Box>
             </StyledGreetBox>
-        </HomeContainer>
+        </MainContainer>
     );
 };
 
