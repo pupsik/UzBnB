@@ -9,9 +9,9 @@ import reportWebVitals from './reportWebVitals';
 import TagManager from 'react-gtm-module';
 
 const tagManagerArgs = {
-    gtmId: 'GTM-5MNW5Q4',
-    auth: '6tYiJeFOUQkPzguQWtb9rw',
-    preview: 'env-2',
+    gtmId: process.env.REACT_APP_GTMID,
+    auth: process.env.REACT_APP_GTM_AUTH,
+    preview: process.env.REACT_APP_GTM_PREVIEW,
 };
 
 TagManager.initialize(tagManagerArgs);
