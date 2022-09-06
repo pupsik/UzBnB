@@ -6,9 +6,20 @@ import App from './App';
 import Auth0ProviderWithHistory from './auth/Auth0ProviderWithHistory';
 import reportWebVitals from './reportWebVitals';
 
+import TagManager from 'react-gtm-module';
+
+const tagManagerArgs = {
+    gtmId: 'GTM-5MNW5Q4',
+    auth: '6tYiJeFOUQkPzguQWtb9rw',
+    preview: 'env-2',
+};
+
+TagManager.initialize(tagManagerArgs);
+
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
 );
+
 root.render(
     <React.StrictMode>
         <BrowserRouter>

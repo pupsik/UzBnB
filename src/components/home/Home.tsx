@@ -13,6 +13,20 @@ const StyledGreetBox = styled(Box)`
 `;
 
 const Home = () => {
+    const onTryFreeButtonClick = () => {
+        window.dataLayer.push({
+            event: 'button-click',
+            name: 'try-for-free',
+        });
+    };
+
+    const onLearnMoreButtonClick = () => {
+        window.dataLayer.push({
+            event: 'button-click',
+            name: 'learn more',
+        });
+    };
+
     return (
         <MainContainer img={img}>
             <ButtonAppBar />
@@ -32,8 +46,18 @@ const Home = () => {
                 </Typography>
                 <Box component="div">
                     <Stack spacing={2} direction="row">
-                        <Button variant="contained">Try for Free</Button>
-                        <Button variant="outlined">Learn More</Button>
+                        <Button
+                            variant="contained"
+                            onClick={() => onTryFreeButtonClick()}
+                        >
+                            Try for Free
+                        </Button>
+                        <Button
+                            variant="outlined"
+                            onClick={() => onLearnMoreButtonClick()}
+                        >
+                            Learn More
+                        </Button>
                     </Stack>
                 </Box>
             </StyledGreetBox>
