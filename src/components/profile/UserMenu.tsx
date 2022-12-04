@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
+import { useNavigate } from 'react-router-dom';
 import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
@@ -10,11 +11,17 @@ import Divider from '@mui/material/Divider';
 import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
 
-const UserAvatar = () => {
+const UserMenu = () => {
     const { user, logout } = useAuth0();
 
     const name: string = user?.name || '';
     const picture: string = user?.picture || '';
+
+    const navigate = useNavigate();
+
+    const goToProfile = () => {
+        navigate('/profile');
+    };
 
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
@@ -23,6 +30,7 @@ const UserAvatar = () => {
     const handleClick = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorEl(event.currentTarget);
     };
+
     const handleClose = () => {
         setAnchorEl(null);
     };
@@ -75,8 +83,8 @@ const UserAvatar = () => {
                 transformOrigin={{ horizontal: 'right', vertical: 'top' }}
                 anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
             >
-                <MenuItem>
-                    <Avatar /> Profile
+                <MenuItem onClick={goToProfile}>
+                    <Avatar/> Profile
                 </MenuItem>
                 <MenuItem>
                     <Avatar /> My account
@@ -105,4 +113,4 @@ const UserAvatar = () => {
     );
 };
 
-export default UserAvatar;
+export default UserMenu;
