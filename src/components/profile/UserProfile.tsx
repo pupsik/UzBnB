@@ -2,6 +2,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 import { MainContainer } from '../home/MainContainer.styles';
 import ButtonAppBar from '../toolbar/ToolBar';
 import img from '../home/images/summer_doodle.jpg';
+import StoryList from '../stories/StoryList';
 
 const UserProfile = () => {
     const { user } = useAuth0();
@@ -30,6 +31,7 @@ const UserProfile = () => {
                     {JSON.stringify(user, null, 2)}
                 </pre>
             </div>
+            <StoryList/>
         </MainContainer>
     );
 };
