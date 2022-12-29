@@ -7,6 +7,7 @@ import Auth0ProviderWithHistory from './auth/Auth0ProviderWithHistory';
 import reportWebVitals from './reportWebVitals';
 
 import TagManager from 'react-gtm-module';
+import { StoreProvider } from './store';
 
 const tagManagerArgs = {
     gtmId: process.env.REACT_APP_GTMID,
@@ -22,11 +23,13 @@ const root = ReactDOM.createRoot(
 
 root.render(
     <React.StrictMode>
-        <BrowserRouter>
-            <Auth0ProviderWithHistory>
-                <App />
-            </Auth0ProviderWithHistory>
-        </BrowserRouter>
+        <StoreProvider>
+            <BrowserRouter>
+                <Auth0ProviderWithHistory>
+                    <App />
+                </Auth0ProviderWithHistory>
+            </BrowserRouter>
+        </StoreProvider>
     </React.StrictMode>
 );
 

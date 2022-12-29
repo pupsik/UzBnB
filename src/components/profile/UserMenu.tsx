@@ -84,7 +84,7 @@ const UserMenu = () => {
                 anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
             >
                 <MenuItem onClick={goToProfile}>
-                    <Avatar/> Profile
+                    <Avatar /> Profile
                 </MenuItem>
                 <MenuItem>
                     <Avatar /> My account

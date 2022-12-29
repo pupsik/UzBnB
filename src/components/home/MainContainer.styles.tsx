@@ -3,12 +3,13 @@ import { Container } from '@mui/material';
 
 export const MainContainer = styled(Container)`
     //border: 1px solid #000;
-    background-image: url(${(props) => props.img});
+    //background-image: url(${(props) => props.img});
+    background-color: #fcf9f6;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    width: 100vw;
-    height: 100vh;
+    width: 200vw;
+    height: 200vh;
 
     &.css-1oqqzyl-MuiContainer-root {
         margin-left: 0;
