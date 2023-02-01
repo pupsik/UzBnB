@@ -7,10 +7,14 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import AuthenticationButton from '../auth/AuthenticationButton';
 
+// const StyledAppBar = styled(AppBar)`
+//     &.css-1hnd8vf-MuiPaper-root-MuiAppBar-root {
+//         background: transparent;
+//     }
+// `;
+
 const StyledAppBar = styled(AppBar)`
-    &.css-1hnd8vf-MuiPaper-root-MuiAppBar-root {
-        background: transparent;
-    }
+    background-color: #fcf9f6;
 `;
 
 const ButtonAppBar = () => {

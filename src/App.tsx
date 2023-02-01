@@ -6,6 +6,7 @@ import theme from './theme/ThemeProvider';
 import UserProfile from './components/profile/UserProfile';
 import ProtectedRoute from './auth/ProtectedRoute';
 import { ThemeProvider } from '@mui/material/styles';
+import { StyledEngineProvider } from '@mui/material/styles';
 
 function App() {
     const { isLoading } = useAuth0();
@@ -15,21 +16,23 @@ function App() {
     }
 
     return (
-        <ThemeProvider theme={theme}>
-            <div id="app" className="d-flex flex-column h-100">
-                <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route
-                        path="profile"
-                        element={
-                            <ProtectedRoute>
-                                <UserProfile />
-                            </ProtectedRoute>
-                        }
-                    />
-                </Routes>
-            </div>
-        </ThemeProvider>
+        <StyledEngineProvider injectFirst>
+            <ThemeProvider theme={theme}>
+                <div id="app" className="d-flex flex-column h-100">
+                    <Routes>
+                        <Route path="/" element={<Home />} />
+                        <Route
+                            path="profile"
+                            element={
+                                <ProtectedRoute>
+                                    <UserProfile />
+                                </ProtectedRoute>
+                            }
+                        />
+                    </Routes>
+                </div>
+            </ThemeProvider>
+        </StyledEngineProvider>
     );
 }
 

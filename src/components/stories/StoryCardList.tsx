@@ -13,21 +13,19 @@ const StoryCardList = () => {
     const [pageNum, setPageNum] = useState(1);
 
     const observer = useRef(
-        new IntersectionObserver(
-            (entries) => {
-                const first = entries[0];
-                if (first.isIntersecting) {
-                    setPageNum((no) => no + 1);
-                }
-            })
+        new IntersectionObserver((entries) => {
+            const first = entries[0];
+            if (first.isIntersecting) {
+                setPageNum((no) => no + 1);
+            }
+        })
     );
 
     React.useEffect(() => {
         storyStore.getStories();
     }, [pageNum]);
-    
 
-    React.useEffect(()=> {
+    React.useEffect(() => {
         const currentElement = lastElement;
         const currentObserver = observer.current;
 
@@ -40,9 +38,7 @@ const StoryCardList = () => {
                 currentObserver.unobserve(currentElement);
             }
         };
-       
     }, [lastElement]);
-
 
     return (
         <Grid
@@ -50,15 +46,16 @@ const StoryCardList = () => {
             spacing={{ xs: 2, md: 3 }}
             columns={{ xs: 4, sm: 8, md: 12 }}
         >
-            {storyStore.stories.map((s, idx) => {   
+            {storyStore.stories.map((s, idx) => {
                 let attributes = {};
-                if (storyStore.stories.length-1===idx){
+                if (storyStore.stories.length - 1 === idx) {
                     attributes = {
-                        ref: node=>setLastElement(node)
+                        ref: (node) => setLastElement(node),
                     };
-                }      
+                }
                 return (
-                    <Grid item
+                    <Grid
+                        item
                         xs={2}
                         sm={4}
                         md={4}

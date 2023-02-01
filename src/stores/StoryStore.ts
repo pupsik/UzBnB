@@ -33,7 +33,7 @@ export class StoryStore {
 
     getStories = () => {
         const maxIdx = this.maxindex;
-
+        api.get('listings');
         return Array.from(Array(this.pageSize)).forEach((_, idx) => {
             this.stories.push({
                 index: idx + maxIdx + 1,

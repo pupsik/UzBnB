@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { Container } from '@mui/material';
 
+// Overriding media queries: https://jsramblings.com/how-to-use-media-queries-with-styled-components/
 export const MainContainer = styled(Container)`
     //border: 1px solid #000;
     //background-image: url(${(props) => props.img});
@@ -8,12 +9,17 @@ export const MainContainer = styled(Container)`
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    width: 200vw;
-    height: 200vh;
-
-    &.css-1oqqzyl-MuiContainer-root {
-        margin-left: 0;
-        margin-right: 0;
+    width: 100vw;
+    height: 100vh;
+    max-width: none;
+    @media (max-width: none) {
         max-width: none;
+        width: 100vw;
     }
 `;
+
+// &.css-1oqqzyl-MuiContainer-root {
+//     margin-left: 0;
+//     margin-right: 0;
+//     max-width: none;
+// }
