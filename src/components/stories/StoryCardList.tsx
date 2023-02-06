@@ -43,8 +43,8 @@ const StoryCardList = () => {
     return (
         <Grid
             container
-            spacing={{ xs: 2, sm: 2, md: 5 }}
-            columns={{ xs: 1, sm: 2, md: 5 }}
+            spacing={{ xs: 2, sm: 2, md: 4 }}
+            // columns={{ xs: 1, sm: 2, md: 5 }}
         >
             {storyStore.stories.map((s, idx) => {
                 let attributes = {};
@@ -56,9 +56,9 @@ const StoryCardList = () => {
                 return (
                     <Grid
                         item
-                        xs={1}
-                        sm={2}
-                        md={4}
+                        xs={12}
+                        sm={6}
+                        md={3}
                         key={s.index}
                         data-id={s.index}
                         {...attributes}
