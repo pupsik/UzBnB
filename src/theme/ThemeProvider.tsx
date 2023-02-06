@@ -8,15 +8,17 @@ const theme = createTheme({
     },
     typography: {
         fontFamily: [
-            '-apple-system',
-            'BlinkMacSystemFont',
-            '"Segoe UI"',
-            'Roboto',
-            '"Helvetica Neue"',
-            'Monospace',
-            '"Apple Color Emoji"',
-            '"Segoe UI Emoji"',
-            '"Segoe UI Symbol"',
+            'Montserrat',
+            'sans-serif'
+            // '-apple-system',
+            // 'BlinkMacSystemFont',
+            // '"Segoe UI"',
+            // 'Roboto',
+            // '"Helvetica Neue"',
+            // 'Monospace',
+            // '"Apple Color Emoji"',
+            // '"Segoe UI Emoji"',
+            // '"Segoe UI Symbol"',
         ].join(','),
     },
     components: {

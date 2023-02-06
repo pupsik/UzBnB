@@ -8,7 +8,7 @@ const Auth0ProviderWithHistory = ({ children }) => {
     const navigate = useNavigate();
 
     const onRedirectCallback = (appState) => {
-        navigate(appState?.returnTo || '/profile');
+        navigate(appState?.returnTo || '/');
     };
     const scope = 'read:stories';
     return (

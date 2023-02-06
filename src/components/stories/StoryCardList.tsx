@@ -43,7 +43,7 @@ const StoryCardList = () => {
     return (
         <Grid
             container
-            spacing={{ xs: 2, md: 3 }}
+            spacing={{ xs: 2, md: 5 }}
             columns={{ xs: 4, sm: 8, md: 12 }}
         >
             {storyStore.stories.map((s, idx) => {
@@ -57,15 +57,16 @@ const StoryCardList = () => {
                     <Grid
                         item
                         xs={2}
-                        sm={4}
-                        md={4}
+                        sm={3}
+                        md={3}
                         key={s.index}
                         data-id={s.index}
                         {...attributes}
+                        
                     >
                         <StoryCard
-                            cardMediaImage={s.image}
-                            cardContentShort={s.summary}
+                            cardMediaImages={s.images}
+                            cardContentShort={s.highlights}
                             cardContentLong={s.body}
                         />
                     </Grid>

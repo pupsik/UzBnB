@@ -15,6 +15,8 @@ import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { observer } from 'mobx-react-lite';
+import Carousel from 'react-material-ui-carousel';
+import StarRoundedIcon from '@mui/icons-material/StarRounded';
 
 interface ExpandMoreProps extends IconButtonProps {
     expand: boolean;
@@ -31,50 +33,55 @@ const ExpandMore = styled((props: ExpandMoreProps) => {
     }),
 }));
 
+interface CardImageProps {
+    path: string;
+    label: string;
+}
+
+interface ListingHighlits {
+    title: string;
+    rating: string;
+    price: string;
+}
+
 interface StoryCardProps {
-    cardMediaImage: string;
-    cardContentShort: string;
+    cardMediaImages: Array<CardImageProps>;
+    cardContentShort: ListingHighlits;
     cardContentLong: string;
 }
 
 const StoryCard = (props: StoryCardProps) => {
     const [expanded, setExpanded] = React.useState(false);
-    const { cardMediaImage, cardContentShort, cardContentLong } = props;
+    const { cardMediaImages, cardContentShort, cardContentLong } = props;
     const handleExpandClick = () => {
         setExpanded(!expanded);
     };
 
     return (
         <Styled.StoryCard>
-            <CardHeader
-                avatar={
-                    <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-                        R
-                    </Avatar>
+            <Carousel autoPlay={false}>
+                {
+                    cardMediaImages.map((item, i) => 
+                        <CardMedia
+                        key={i}
+                        component="img"
+                        height="300"
+                        image={item.path}
+                        alt="Paella dish"
+                    />
+                    )
                 }
-                action={
-                    <IconButton aria-label="settings">
-                        <MoreVertIcon />
-                    </IconButton>
-                }
-                title="Shrimp and Chorizo Paella"
-                subheader="September 14, 2016"
-            />
-            <CardMedia
-                component="img"
-                height="194"
-                // image={`https://picsum.photos/id/${getRandomArbitrary(
-                //     200,
-                //     300
-                // )}/300/200`}
-                image={cardMediaImage}
-                alt="Paella dish"
-            />
+                
+            </Carousel>
             <CardContent>
-                <Typography variant="body2" color="text.secondary">
-                    This impressive paella is a perfect party dish and a fun
-                    meal to cook together with your guests. Add 1 cup of frozen
-                    peas along with the mussels, if you like.
+                <Typography variant="subtitle1" color="text.secondary" align="justify">
+                    <div style={{display: "flex", alignItems: "center", justifyContent: "space-between"}}>
+                        <span><strong>{props.cardContentShort.title}</strong></span>
+                        <span><StarRoundedIcon style={{verticalAlign: "top"}}/>{` ${props.cardContentShort.rating}`}</span>
+                    </div>
+                </Typography>
+                <Typography variant="subtitle1" color="text.secondary">
+                    {props.cardContentShort.price}
                 </Typography>
             </CardContent>
             <CardActions disableSpacing>

@@ -12,6 +12,7 @@ const StyledGreetBox = styled(Box)`
     max-width: 50%;
 `;
 
+// Deprecated
 const Home = () => {
     const onTryFreeButtonClick = () => {
         window.dataLayer.push({
