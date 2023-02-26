@@ -1,4 +1,4 @@
-import Home from '../home/Home';
+import Home from '../../../bin/Home';
 
 const UnauthNav = () => (
     <div className="navbar-nav ml-auto">

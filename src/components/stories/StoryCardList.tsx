@@ -62,7 +62,6 @@ const StoryCardList = () => {
                         key={s.index}
                         data-id={s.index}
                         {...attributes}
-                        
                     >
                         <StoryCard
                             cardMediaImages={s.images}

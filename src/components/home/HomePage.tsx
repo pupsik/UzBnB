@@ -8,9 +8,6 @@ import api from '../../service/api';
 import StoryCardList from '../stories/StoryCardList';
 
 const HomePage = () => {
-
-    
-
     return (
         <MainContainer img={img}>
             <ButtonAppBar />

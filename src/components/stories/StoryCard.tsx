@@ -60,24 +60,36 @@ const StoryCard = (props: StoryCardProps) => {
     return (
         <Styled.StoryCard>
             <Carousel autoPlay={false}>
-                {
-                    cardMediaImages.map((item, i) => 
-                        <CardMedia
+                {cardMediaImages.map((item, i) => (
+                    <CardMedia
                         key={i}
                         component="img"
                         height="300"
                         image={item.path}
                         alt="Paella dish"
                     />
-                    )
-                }
-                
+                ))}
             </Carousel>
             <CardContent>
-                <Typography variant="subtitle1" color="text.secondary" align="justify">
-                    <div style={{display: "flex", alignItems: "center", justifyContent: "space-between"}}>
-                        <span><strong>{props.cardContentShort.title}</strong></span>
-                        <span><StarRoundedIcon style={{verticalAlign: "top"}}/>{` ${props.cardContentShort.rating}`}</span>
+                <Typography
+                    variant="subtitle1"
+                    color="text.secondary"
+                    align="justify"
+                >
+                    <div
+                        style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'space-between',
+                        }}
+                    >
+                        <span>
+                            <strong>{props.cardContentShort.title}</strong>
+                        </span>
+                        <span>
+                            <StarRoundedIcon style={{ verticalAlign: 'top' }} />
+                            {` ${props.cardContentShort.rating}`}
+                        </span>
                     </div>
                 </Typography>
                 <Typography variant="subtitle1" color="text.secondary">
