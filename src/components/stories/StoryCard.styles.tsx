@@ -2,5 +2,6 @@ import styled from 'styled-components';
 import { Card } from '@mui/material';
 
 export const StoryCard = styled(Card)`
-    max-width: auto;
+    max-width: 400px;
+    border-radius: 15px;
 `;

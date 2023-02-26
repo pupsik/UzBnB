@@ -13,21 +13,19 @@ const StoryCardList = () => {
     const [pageNum, setPageNum] = useState(1);
 
     const observer = useRef(
-        new IntersectionObserver(
-            (entries) => {
-                const first = entries[0];
-                if (first.isIntersecting) {
-                    setPageNum((no) => no + 1);
-                }
-            })
+        new IntersectionObserver((entries) => {
+            const first = entries[0];
+            if (first.isIntersecting) {
+                setPageNum((no) => no + 1);
+            }
+        })
     );
 
     React.useEffect(() => {
         storyStore.getStories();
     }, [pageNum]);
-    
 
-    React.useEffect(()=> {
+    React.useEffect(() => {
         const currentElement = lastElement;
         const currentObserver = observer.current;
 
@@ -40,35 +38,34 @@ const StoryCardList = () => {
                 currentObserver.unobserve(currentElement);
             }
         };
-       
     }, [lastElement]);
-
 
     return (
         <Grid
             container
-            spacing={{ xs: 2, md: 3 }}
-            columns={{ xs: 4, sm: 8, md: 12 }}
+            spacing={{ xs: 2, sm: 2, md: 4 }}
+            // columns={{ xs: 1, sm: 2, md: 5 }}
         >
-            {storyStore.stories.map((s, idx) => {   
+            {storyStore.stories.map((s, idx) => {
                 let attributes = {};
-                if (storyStore.stories.length-1===idx){
+                if (storyStore.stories.length - 1 === idx) {
                     attributes = {
-                        ref: node=>setLastElement(node)
+                        ref: (node) => setLastElement(node),
                     };
-                }      
+                }
                 return (
-                    <Grid item
-                        xs={2}
-                        sm={4}
-                        md={4}
+                    <Grid
+                        item
+                        xs={12}
+                        sm={6}
+                        md={3}
                         key={s.index}
                         data-id={s.index}
                         {...attributes}
                     >
                         <StoryCard
-                            cardMediaImage={s.image}
-                            cardContentShort={s.summary}
+                            cardMediaImages={s.images}
+                            cardContentShort={s.highlights}
                             cardContentLong={s.body}
                         />
                     </Grid>

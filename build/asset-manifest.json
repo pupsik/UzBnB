@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/static/css/main.073c9b0a.css",
+    "main.js": "/static/js/main.fc2a25b2.js",
+    "static/js/787.de6d5815.chunk.js": "/static/js/787.de6d5815.chunk.js",
+    "static/media/summer_doodle.jpg": "/static/media/summer_doodle.809fa34fd1144aa30680.jpg",
+    "static/media/logo.png": "/static/media/logo.38f42dfff72f10a89173.png",
+    "index.html": "/index.html",
+    "main.073c9b0a.css.map": "/static/css/main.073c9b0a.css.map",
+    "main.fc2a25b2.js.map": "/static/js/main.fc2a25b2.js.map",
+    "787.de6d5815.chunk.js.map": "/static/js/787.de6d5815.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.073c9b0a.css",
+    "static/js/main.fc2a25b2.js"
+  ]
+}

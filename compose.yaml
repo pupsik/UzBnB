@@ -1,0 +1,56 @@
+version: '3.9'
+
+services:
+    orca-app:
+        build:
+            context: .
+            dockerfile: docker/orca.dockerfile
+            platforms:
+                - 'linux/amd64'
+        container_name: uzbnb-rca
+        volumes:
+            - './static-content/:/app/build/'
+        # command: "/bin/sh"
+        # stdin_open: true
+        # tty: true
+
+    certbot:
+        image: certbot/certbot:latest
+        command: >-
+            certonly --reinstall --webroot --webroot-path=/var/www/certbot
+            --email ${EMAIL} --agree-tos --no-eff-email
+            -d uzbnb.tech
+        volumes:
+            - './certbot/www/:/var/www/certbot/:rw'
+            - './certbot/conf/:/etc/nginx/ssl/:ro'
+
+    nginx: &nginx-simple
+        build:
+            context: .
+            dockerfile: docker/nginx.dockerfile
+        command: ['nginx', '-g', 'daemon off;']
+        #command: "bin/sh"
+        container_name: uzbnb-nginx
+        ports:
+            - '80:80'
+        depends_on:
+            - orca-app
+        restart: always
+        volumes:
+            - './static-content/:/var/www/html/uzbnb/build'
+            - './docker/files/nginx.uzbnb.conf:/etc/nginx/conf.d/uzbnb.conf'
+        stdin_open: true
+        tty: true
+
+    nginx-tls:
+        <<: *nginx-simple
+        ports:
+            - '443:443'
+        depends_on:
+            - orca-app
+            - certbot
+        volumes:
+            - './static-content/:/var/www/html/uzbnb/build'
+            - './docker/files/nginx.uzbnb-tls.conf:/etc/nginx/conf.d/uzbnb-tls.conf'
+            - './etc/letsencrypt:/etc/letsencrypt:ro'
+            - './certbot/data:/var/www/certbot'

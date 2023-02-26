@@ -2,22 +2,16 @@ import { createTheme } from '@mui/material/styles';
 
 const theme = createTheme({
     palette: {
+        mode: 'light',
         primary: {
-            main: '#4e2767',
+            main: '#ff385c',
+        },
+        secondary: {
+            main: '#f50057',
         },
     },
     typography: {
-        fontFamily: [
-            '-apple-system',
-            'BlinkMacSystemFont',
-            '"Segoe UI"',
-            'Roboto',
-            '"Helvetica Neue"',
-            'Monospace',
-            '"Apple Color Emoji"',
-            '"Segoe UI Emoji"',
-            '"Segoe UI Symbol"',
-        ].join(','),
+        fontFamily: ['Montserrat', 'sans-serif'].join(','),
     },
     components: {
         MuiButton: {
