@@ -1,13 +1,19 @@
 import './App.css';
 import { useAuth0 } from '@auth0/auth0-react';
-import { Route, Routes } from 'react-router-dom';
+import { Outlet, Route, Routes } from 'react-router-dom';
 import theme from './theme/ThemeProvider';
-import HomePage from './components/home/HomePage';
+import HomePage from './views/HomePage';
 import ProtectedRoute from './auth/ProtectedRoute';
-import { ThemeProvider } from '@mui/material/styles';
+import { ThemeProvider as MuiThemeProvider } from '@mui/material/styles';
+import { ThemeProvider } from 'styled-components';
 import { StyledEngineProvider } from '@mui/material/styles';
 import UserAccount from './components/account/UserAccount';
-import UserProfile from './components/profile/UserProfile';
+import UserProfile from './views/UserProfilePage';
+import { dividerClasses } from '@mui/material';
+import PropertyPage from './views/PropertyPage';
+
+// Injecting themes and making them available to styled components
+// https://medium.com/@abdurakhimov.sardor/how-to-use-and-customize-material-ui-version-5-with-styled-components-295e62562e61
 
 function App() {
     const { isLoading } = useAuth0();
@@ -18,29 +24,36 @@ function App() {
 
     return (
         <StyledEngineProvider injectFirst>
-            <ThemeProvider theme={theme}>
-                <div id="app" className="d-flex flex-column h-100">
-                    <Routes>
-                        <Route path="/" element={<HomePage />} />
-                        <Route
-                            path="account-settings"
-                            element={
-                                <ProtectedRoute>
-                                    <UserAccount />
-                                </ProtectedRoute>
-                            }
-                        />
-                        <Route
-                            path="user"
-                            element={
-                                <ProtectedRoute>
-                                    <UserProfile />
-                                </ProtectedRoute>
-                            }
-                        />
-                    </Routes>
-                </div>
-            </ThemeProvider>
+            {/* Injecting themes both ways -- there must be a better way */}
+            <MuiThemeProvider theme={theme}>
+                <ThemeProvider theme={theme}>
+                    <div id="app" className="d-flex flex-column h-100">
+                        <Routes>
+                            <Route path="/" element={<HomePage />} />
+                            <Route
+                                path="/property/:id"
+                                element={<PropertyPage />}
+                            />
+                            <Route
+                                path="account-settings"
+                                element={
+                                    <ProtectedRoute>
+                                        <UserAccount />
+                                    </ProtectedRoute>
+                                }
+                            />
+                            <Route
+                                path="user"
+                                element={
+                                    <ProtectedRoute>
+                                        <UserProfile />
+                                    </ProtectedRoute>
+                                }
+                            />
+                        </Routes>
+                    </div>
+                </ThemeProvider>
+            </MuiThemeProvider>
         </StyledEngineProvider>
     );
 }

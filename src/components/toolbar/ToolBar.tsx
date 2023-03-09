@@ -1,53 +1,35 @@
-import styled from 'styled-components';
-//import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
+import React, { FC } from 'react';
 import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
+import * as Styled from './ToolBar.styles';
 import AuthenticationButton from '../auth/AuthenticationButton';
+import { useNavigate } from 'react-router-dom';
 import SearchBar from './SearchBar';
 import img from './logo.png';
-import { Logo } from './ToolBar.styles';
 
-// const StyledAppBar = styled(AppBar)`
-//     &.css-1hnd8vf-MuiPaper-root-MuiAppBar-root {
-//         background: transparent;
-//     }
-// `;
+type ToolBarProps = {
+    withSearchBar?: boolean;
+};
 
-// const StyledAppBar = styled(AppBar)`
-//     background-color: #fcf9f6;
-// `;
+const MainToolBar: FC<ToolBarProps> = ({ withSearchBar = true }) => {
+    const navigate = useNavigate();
+    const goToHome = () => navigate('/');
 
-const ButtonAppBar = () => {
     return (
-        <Box sx={{ flexGrow: 1, paddingTop: '15px', marginBottom: '40px' }}>
-            <Toolbar>
-               <Logo src={img} alt="My Logo"/>
-                {/* <IconButton
-                    size="large"
-                    edge="start"
-                    color="default"
-                    aria-label="menu"
-                    sx={{ mr: 2 }}
-                >
-                    <MenuIcon />
-                </IconButton>
-
-                <Typography
-                    variant="h6"
-                    component="div"
-                    sx={{ flexGrow: 1 }}
-                    color="black"
-                >
-                    About
-                </Typography> */}
-                <SearchBar />
-                <AuthenticationButton />
+        <Styled.ToolBarContainer>
+            <Toolbar className="toolbar">
+                <img 
+                    src={img}
+                    alt="Rooms Logo"
+                    className="toolbar__logo"
+                    onClick={goToHome}
+                />
+                {withSearchBar && <SearchBar setSearchQuery={undefined} />}
+                <div className="toolbar__avatar">
+                    <AuthenticationButton />
+                </div>
             </Toolbar>
-        </Box>
+        </Styled.ToolBarContainer>
     );
 };
 
-export default ButtonAppBar;
+export default MainToolBar;
