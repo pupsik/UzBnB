@@ -1,14 +1,14 @@
-import gameStore, { GameStore } from './GameStore';
-import storyStore, { StoryStore } from './StoryStore';
+
+import propertyStore, { PropertyStore } from './PropertyStore';
 
 export type RootStore = {
-    gameStore: GameStore;
-    storyStore: StoryStore;
+
+    propertyStore: PropertyStore;
 };
 
 const rootStore: RootStore = {
-    gameStore,
-    storyStore,
+
+    propertyStore,
 };
 
 export default rootStore;

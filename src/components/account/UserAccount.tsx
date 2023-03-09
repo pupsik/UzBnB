@@ -1,10 +1,12 @@
 import { Fragment } from 'react';
+import { MainContainer } from '../containers/MainContainer.styles';
+import MainToolBar from '../toolbar/ToolBar';
 
 const UserAccount = () => {
     return (
-        <Fragment>
-            <div>This is the user profile</div>
-        </Fragment>
+        <MainContainer>
+            <MainToolBar withSearchBar={false} />
+        </MainContainer>
     );
 };
 
