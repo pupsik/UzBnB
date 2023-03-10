@@ -32,10 +32,8 @@ const BookingCost = (props: BookingCostProps) => {
 
     const extra_guests = (props.total_guests || 0) - props.pricing.min_guests;
 
-    const cost_for_extra_guests = Math.max(
-        props.pricing.price_per_extra_guest * extra_guests,
-        0
-    );
+    const cost_for_extra_guests =
+        props.pricing.price_per_extra_guest * Math.max(extra_guests, 0);
 
     const service_fee = Math.round(
         cost_for_total_nights * props.pricing.service_fee_factor
