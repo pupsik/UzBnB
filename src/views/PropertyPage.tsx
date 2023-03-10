@@ -1,14 +1,16 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
+
+import { Avatar, Divider, Grid, Typography } from '@mui/material';
+
 import { MainContainerNarrow } from '../components/containers/MainContainer.styles';
-import MainToolBar from '../components/toolbar/ToolBar';
-import { PropertyImageQuilt } from '../components/property/PropertyImageQuilt';
-import { PropertyDetails } from '../interfaces/Property';
-import { useStore } from '../store';
+import { PropertyBookingCard } from '../components/property/PropertyBookingCard';
 import { PropertyDetailsHeader } from '../components/property/PropertyDetailsHeader';
 import { PropertyDetailsHighlights } from '../components/property/PropertyDetailsHighlights';
-import { Avatar, Divider, Grid, Typography } from '@mui/material';
-import { PropertyBookingCard } from '../components/property/PropertyBookingCard';
+import { PropertyImageQuilt } from '../components/property/PropertyImageQuilt';
+import MainToolBar from '../components/toolbar/ToolBar';
+import { PropertyDetails } from '../interfaces/Property';
+import { useStore } from '../store';
 
 const PropertyPage = () => {
     const { id } = useParams();
@@ -33,7 +35,10 @@ const PropertyPage = () => {
             {propertyDetails && (
                 <>
                     <PropertyDetailsHeader {...propertyDetails} />
-                    <div className="property__image-quilt" style={{marginBottom: "3rem", marginTop: "2rem"}}>
+                    <div
+                        className="property__image-quilt"
+                        style={{ marginBottom: '3rem', marginTop: '2rem' }}
+                    >
                         <PropertyImageQuilt id={id} />
                     </div>
                     <Grid
@@ -48,7 +53,7 @@ const PropertyPage = () => {
                             item
                             xs={12}
                             md={8}
-                          //  sx={{ border: '1px solid black', height: '100%' }}
+                            //  sx={{ border: '1px solid black', height: '100%' }}
                         >
                             <Grid item xs={12}>
                                 <PropertyDetailsHighlights
@@ -58,8 +63,8 @@ const PropertyPage = () => {
                             <Grid
                                 item
                                 xs={12}
-                               
-                              //  sx={{ border: '1px solid black' }}
+
+                                //  sx={{ border: '1px solid black' }}
                             >
                                 <div style={{ padding: '1rem 0' }}>
                                     <Typography variant="h6">
@@ -79,15 +84,18 @@ const PropertyPage = () => {
                             item
                             xs={12}
                             md={4}
-                         //   sx={{ border: '1px solid black' }}
+                            //   sx={{ border: '1px solid black' }}
                         >
-                            <PropertyBookingCard 
-                                {...propertyDetails}
-                            />
+                            <PropertyBookingCard {...propertyDetails} />
                         </Grid>
                     </Grid>
-                    <section className="property__reviews">
+                    <section id="reviews">
                         <h3 className="reviews">Reviews go here</h3>
+                        <div>Review 1</div>
+                        <div>Review 2</div>
+                        <div>Review 3</div>
+                        <div>Review 4</div>
+                        <div>Review 5</div>
                     </section>
                 </>
             )}
