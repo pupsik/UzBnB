@@ -1,3 +1,5 @@
+import { User } from './User';
+
 export interface PropertyImage {
     id: number;
     path: string;
@@ -14,6 +16,13 @@ export interface PropertySummary {
     body: string;
 }
 
+export interface PropertyPricingDetails {
+    price_per_night: number;
+    min_guests: number;
+    price_per_extra_guest: number;
+    service_fee_factor: number;
+}
+
 export interface PropertyDetails {
     id: number;
     title: string;
@@ -23,17 +32,14 @@ export interface PropertyDetails {
     features?: string[];
     subtitle: string;
     rating: number;
-    hosted_by: {
-        user_id: number;
-        first_name: string;
-        last_name: string;
-    };
+    hosted_by: User;
     config: {
         max_guests: number;
         bedrooms: number;
         bathrooms: number;
         beds: number;
     };
+    pricing: PropertyPricingDetails;
 }
 
 export type PropertySummaries = Array<PropertySummary>;

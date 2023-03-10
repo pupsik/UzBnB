@@ -64,6 +64,12 @@ export class PropertyStore {
                 bedrooms: getRandomArbitrary(1,5), 
                 bathrooms: getRandomArbitrary(1,4), 
                 beds: getRandomArbitrary(1,10)
+            },
+            pricing: {
+                price_per_night: getRandomArbitrary(80,800),
+                min_guests: getRandomArbitrary(0, 6),
+                price_per_extra_guest: getRandomArbitrary(10, 50),
+                service_fee_factor: getRandomArbitrary(5, 15)/100,
             }
         };
     };

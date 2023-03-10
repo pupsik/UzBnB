@@ -1,9 +1,9 @@
-import { Typography } from '@mui/material';
 import StarRoundedIcon from '@mui/icons-material/StarRounded';
+import { Typography } from '@mui/material';
+
 import { PropertyDetails } from '../../interfaces/Property';
-import { getRandomArbitrary } from '../../utilities';
-import { ReviewsLink } from '../common/ReviewsLink';
 import { DotSpan } from '../common/DotSpan';
+import { ReviewsLink } from '../common/ReviewsLink';
 
 export const PropertyDetailsHeader = ({
     title,
@@ -22,11 +22,13 @@ export const PropertyDetailsHeader = ({
             <Typography>
                 <span>
                     <StarRoundedIcon style={{ verticalAlign: 'top' }} />
-                    {` ${(rating).toString()}`}
+                    {` ${rating.toString()}`}
                 </span>
                 <DotSpan> &ensp;&#9642; &ensp;</DotSpan>
                 <span style={{ fontWeight: 600 }}>
-                    <ReviewsLink href="#">{review_count} reviews</ReviewsLink>
+                    <ReviewsLink href="#reviews">
+                        {review_count} reviews
+                    </ReviewsLink>
                 </span>
                 <DotSpan> &ensp;&#9642; &ensp;</DotSpan>
                 {short_address}
