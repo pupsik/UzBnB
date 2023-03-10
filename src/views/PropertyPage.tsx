@@ -45,14 +45,17 @@ const PropertyPage = () => {
                         container
                         spacing={2}
                         direction="row"
+                        alignContent={'flex-start'}
                         //  alignItems={'stretch'}
                         //alignContent={'center'}
                     >
                         <Grid
                             container
                             item
-                            xs={12}
-                            md={8}
+                            sm={12}
+                            //sm={6}
+                            lg={8}
+                            alignContent={'flex-start'}
                             //  sx={{ border: '1px solid black', height: '100%' }}
                         >
                             <Grid item xs={12}>
@@ -82,8 +85,9 @@ const PropertyPage = () => {
                         </Grid>
                         <Grid
                             item
-                            xs={12}
-                            md={4}
+                            sm={12}
+                            //  sm={6}
+                            lg={4}
                             //   sx={{ border: '1px solid black' }}
                         >
                             <PropertyBookingCard {...propertyDetails} />

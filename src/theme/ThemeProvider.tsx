@@ -133,15 +133,15 @@ theme.typography.h6 = {
 theme.typography.body1 = {
     fontSize: '1rem',
     lineHeight: '1.5rem',
-    
+
     [theme.breakpoints.up('xs')]: {
-        fontSize: '.75rem',
+        fontSize: '.9rem',
     },
     [theme.breakpoints.between('sm', 'md')]: {
-        fontSize: '.8rem',
+        fontSize: '.9rem',
     },
     [theme.breakpoints.between('md', 'lg')]: {
-        fontSize: '.9rem',
+        fontSize: '1rem',
     },
     [theme.breakpoints.between('lg', 'xl')]: {
         fontSize: '1rem',
