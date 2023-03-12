@@ -83,7 +83,10 @@ export const PropertyReviewsGrid = (props: PropertyReviews) => {
                                                     >
                                                         Ali Connors
                                                     </Typography>
-                                                    <Typography variant="body1">
+                                                    <Typography
+                                                        variant="body1"
+                                                        component="span"
+                                                    >
                                                         {x.review_text.length <
                                                         251
                                                             ? x.review_text
@@ -110,14 +113,15 @@ export const PropertyReviewsGrid = (props: PropertyReviews) => {
                     })}
                 </Grid>
             ))}
-
-            <Pagination
-                count={Math.round(props.reviews.length / 6)}
-                page={currentPage}
-                color="primary"
-                onChange={handleOnPageChange}
-                size={'large'}
-            />
+            <div style={{ display: 'flex', justifyContent: 'space-around' }}>
+                <Pagination
+                    count={Math.round(props.reviews.length / 6)}
+                    page={currentPage}
+                    color="primary"
+                    onChange={handleOnPageChange}
+                    size={'large'}
+                />
+            </div>
         </>
     );
 };

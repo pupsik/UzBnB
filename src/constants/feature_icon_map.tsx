@@ -5,11 +5,13 @@ import RestaurantIcon from '@mui/icons-material/Restaurant';
 import TvIcon from '@mui/icons-material/Tv';
 import WifiIcon from '@mui/icons-material/Wifi';
 
+const iconFontSize = "large";
+
 export const feature_icon_map = {
-    WiFi: <WifiIcon />,
-    Kitchen: <KitchenIcon />,
-    'Cooking basics': <RestaurantIcon />,
-    'Fee Parking': <LocalParkingIcon />,
-    Books: <MenuBookIcon />,
-    TV: <TvIcon />,
+    WiFi: <WifiIcon fontSize={iconFontSize}/>,
+    Kitchen: <KitchenIcon fontSize={iconFontSize}/>,
+    'Cooking basics': <RestaurantIcon fontSize={iconFontSize}/>,
+    'Free parking': <LocalParkingIcon fontSize={iconFontSize}/>,
+    Books: <MenuBookIcon fontSize={iconFontSize}/>,
+    TV: <TvIcon fontSize={iconFontSize}/>,
 };

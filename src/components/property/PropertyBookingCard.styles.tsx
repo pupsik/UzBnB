@@ -26,6 +26,9 @@ export const PropertyCalendar = styled(DateCalendar)`
 `;
 
 export const PropertyCalendarCard = styled(Card)`
+    position: sticky;
+    position: -webkit-sticky;
+    top: 15vh;
     border: 1px solid ${(props) => props.theme.palette.grey[200]};
     border-radius: 12px;
     padding: 1rem;

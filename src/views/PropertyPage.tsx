@@ -7,6 +7,7 @@ import { MainContainerNarrow } from '../components/containers/MainContainer.styl
 import { PropertyBookingCard } from '../components/property/PropertyBookingCard';
 import { PropertyDetailsHeader } from '../components/property/PropertyDetailsHeader';
 import { PropertyDetailsHighlights } from '../components/property/PropertyDetailsHighlights';
+import { PropertyFeatureCard } from '../components/property/PropertyFeatureCard';
 import { PropertyImageQuilt } from '../components/property/PropertyImageQuilt';
 import { PropertyReviewsGrid } from '../components/property/PropertyReviewsGrid';
 import MainToolBar from '../components/toolbar/ToolBar';
@@ -93,14 +94,26 @@ const PropertyPage = () => {
                                 <Typography variant="h6">
                                     What this place offers
                                 </Typography>
+                                <PropertyFeatureCard
+                                    {...{
+                                        set: propertyDetails.features || [],
+                                    }}
+                                />
                             </Grid>
                             <Grid item xs={12}>
                                 <section id="reviews">
                                     {id && propertyReviews?.reviews && (
                                         <>
-                                            <h3 className="reviews">
-                                                Reviews go here
-                                            </h3>
+                                            {' '}
+                                            <Divider
+                                                orientation="horizontal"
+                                                sx={{
+                                                    borderWidth: '1px',
+                                                }}
+                                            />
+                                            <Typography variant="h6">
+                                                What others say
+                                            </Typography>
                                             <PropertyReviewsGrid
                                                 id={parseInt(id)}
                                                 reviews={
@@ -109,13 +122,6 @@ const PropertyPage = () => {
                                             />
                                         </>
                                     )}
-
-                                    {/* <h3 className="reviews">Reviews go here</h3>
-                                    <div>Review 1</div>
-                                    <div>Review 2</div>
-                                    <div>Review 3</div>
-                                    <div>Review 4</div>
-                                    <div>Review 5</div> */}
                                 </section>
                             </Grid>
                         </Grid>

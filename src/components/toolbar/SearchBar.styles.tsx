@@ -1,16 +1,11 @@
-import styled from 'styled-components';
 import { IconButton } from '@mui/material';
+import styled from 'styled-components';
 
 export const SearchDiv = styled.div`
     display: inline-block;
 
     fieldset {
         border-radius: 40px;
-    }
-    .search-bar__input {
-        @media (max-width: ${(props) => props.theme.breakpoints.values.sm}px) {
-            width: 40vw;
-        }
     }
 `;
 

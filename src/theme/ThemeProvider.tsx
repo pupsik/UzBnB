@@ -134,7 +134,7 @@ theme.typography.h6 = {
 
 theme.typography.body1 = {
     fontSize: '1rem',
-    lineHeight: '1.5rem',
+    lineHeight: '1.75rem',
     fontFamily: fontFamily,
     [theme.breakpoints.up('xs')]: {
         fontSize: '.9rem',
