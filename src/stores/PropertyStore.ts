@@ -1,7 +1,7 @@
 import { observable, action, computed, makeObservable } from 'mobx';
 import { faker } from '@faker-js/faker';
 import { getRandomArbitrary, capitalizeFirstLetter } from '../utilities';
-import { PropertySummaries, PropertyImages, PropertyDetails } from '../interfaces/Property';
+import { PropertySummaries, PropertyImages, PropertyDetails, PropertyReviews } from '../interfaces/Property';
 import { houseTypes, houseAdjective, houseLocation } from '../constants/fake_picklists';
 import api from '../service/api';
 
@@ -36,6 +36,20 @@ export class PropertyStore {
         );
     };
 
+    getPropertyReviews = (id: number):PropertyReviews => {
+        return {
+            id: id, 
+            reviews: Array.from(Array(getRandomArbitrary(1,50))).map(
+                (_x, idx) => (
+                    {
+                        review_id: idx, 
+                        review_text: `${faker.lorem.paragraph(getRandomArbitrary(4,7))}`
+                    }
+                )
+            )
+        };
+    };
+
     getPropertyDetails = (id:number):PropertyDetails => {
 
         const start = capitalizeFirstLetter(
@@ -51,7 +65,7 @@ export class PropertyStore {
             review_count: getRandomArbitrary(5,500),
             short_address: `${faker.address.city()}, ${faker.address.state()}`,
             description: `${faker.lorem.paragraph(getRandomArbitrary(4,7))}`,
-            features: [],
+            features: ["WiFi", "Kitchen", "Cooking basics", "Free parking", "Books", "TV"],
             subtitle: `Entire ${faker.helpers.arrayElement(houseTypes)} by ${faker.name.firstName()}`,
             rating: (getRandomArbitrary(100, 500) / 100),
             hosted_by: {

@@ -2,13 +2,6 @@ import Card from '@mui/material/Card';
 import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
 import styled from 'styled-components';
 
-export const CostDivContainer = styled.div`
-    display: flex;
-    justify-content: space-between;
-    // font-size: 1.2rem;
-    margin: 1rem;
-`;
-
 export const PropertyHeaderDivContainer = styled.div`
     display: flex;
     flex-direction: row;

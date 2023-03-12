@@ -1,5 +1,7 @@
 import { createTheme, responsiveFontSizes } from '@mui/material/styles';
 
+const fontFamily = ['Roboto', 'sans-serif'].join(',');
+
 const theme = createTheme({
     palette: {
         mode: 'light',
@@ -42,7 +44,7 @@ const theme = createTheme({
         },
     },
     typography: {
-        fontFamily: ['Montserrat', 'sans-serif'].join(','),
+        fontFamily: fontFamily,
         fontSize: 10,
     },
 });
@@ -51,7 +53,7 @@ const theme = createTheme({
 
 theme.typography.h1 = {
     fontSize: '6rem',
-
+    fontFamily: fontFamily,
     [theme.breakpoints.up('xs')]: {
         fontSize: '3rem',
     },
@@ -71,7 +73,7 @@ theme.typography.h1 = {
 
 theme.typography.h2 = {
     fontSize: '3.75rem',
-
+    fontFamily: fontFamily,
     [theme.breakpoints.up('xs')]: {
         fontSize: '1.25rem',
     },
@@ -91,7 +93,7 @@ theme.typography.h2 = {
 
 theme.typography.h4 = {
     fontSize: '2.125rem',
-
+    fontFamily: fontFamily,
     [theme.breakpoints.up('xs')]: {
         fontSize: '1.25rem',
     },
@@ -111,7 +113,7 @@ theme.typography.h4 = {
 
 theme.typography.h6 = {
     fontSize: '1.25rem',
-
+    fontFamily: fontFamily,
     [theme.breakpoints.up('xs')]: {
         fontSize: '.9rem',
     },
@@ -119,10 +121,10 @@ theme.typography.h6 = {
         fontSize: '1rem',
     },
     [theme.breakpoints.between('md', 'lg')]: {
-        fontSize: '1.15rem',
+        fontSize: '1.1rem',
     },
     [theme.breakpoints.between('lg', 'xl')]: {
-        fontSize: '1.25rem',
+        fontSize: '1.2rem',
         padding: '.5rem 0',
     },
     [theme.breakpoints.up('xl')]: {
@@ -133,7 +135,7 @@ theme.typography.h6 = {
 theme.typography.body1 = {
     fontSize: '1rem',
     lineHeight: '1.5rem',
-
+    fontFamily: fontFamily,
     [theme.breakpoints.up('xs')]: {
         fontSize: '.9rem',
     },
@@ -150,5 +152,26 @@ theme.typography.body1 = {
         fontSize: '1.2rem',
     },
 };
+
+theme.typography.subtitle1 = {
+    fontSize: '1rem',
+    fontFamily: fontFamily,
+    [theme.breakpoints.up('xs')]: {
+        fontSize: '.8rem',
+    },
+    [theme.breakpoints.between('sm', 'md')]: {
+        fontSize: '.8rem',
+    },
+    [theme.breakpoints.between('md', 'lg')]: {
+        fontSize: '.8rem',
+    },
+    [theme.breakpoints.between('lg', 'xl')]: {
+        fontSize: '.9rem',
+    },
+    [theme.breakpoints.up('xl')]: {
+        fontSize: '1rem',
+    },
+};
+
 
 export default theme;

@@ -23,6 +23,16 @@ export interface PropertyPricingDetails {
     service_fee_factor: number;
 }
 
+export type Review = {
+    review_id: number;
+    review_text: string;
+};
+
+export interface PropertyReviews {
+    id: number;
+    reviews: any[];
+}
+
 export interface PropertyDetails {
     id: number;
     title: string;
