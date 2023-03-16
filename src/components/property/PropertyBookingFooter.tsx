@@ -2,12 +2,22 @@ import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 
-import { PropertyDetails } from '../../interfaces/Property';
+import { PropertyPricingDetails } from '../../interfaces/Property';
 import * as Styled from './PropertyBookingFooter.styles';
 
-export const PropertyBookingFooter = ({ pricing }: PropertyDetails) => {
+interface PropertyBookingFooterProps {
+    pricing: PropertyPricingDetails;
+}
+
+export const PropertyBookingFooter: React.FC<PropertyBookingFooterProps> = ({
+    pricing,
+}) => {
     return (
-        <Styled.FooterContainer container spacing={2}>
+        <Styled.FooterContainer
+            container
+            spacing={2}
+            sx={{ display: {lg: 'none' } }}
+        >
             <Grid xs={6} item>
                 <Typography variant="h6">{`$${pricing.price_per_night.toString()} per night`}</Typography>
             </Grid>
@@ -16,12 +26,11 @@ export const PropertyBookingFooter = ({ pricing }: PropertyDetails) => {
                     type="submit"
                     variant="contained"
                     sx={{
-                        fontSize: '1rem',
-                        padding: '1rem',
                         width: '100%',
+                        maxWidth: '10rem',
                     }}
                 >
-                    Reserve
+                    <Typography sx={{padding: '.3rem'}}>Reserve</Typography>
                 </Button>
             </Grid>
         </Styled.FooterContainer>
