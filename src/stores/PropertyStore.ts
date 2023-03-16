@@ -43,6 +43,11 @@ export class PropertyStore {
                 (_x, idx) => (
                     {
                         review_id: idx, 
+                        review_by: {
+                            user_id: getRandomArbitrary(1,1000),
+                            first_name: faker.name.firstName(),
+                            last_name: faker.name.lastName()
+                        },
                         review_text: `${faker.lorem.paragraph(getRandomArbitrary(4,7))}`
                     }
                 )

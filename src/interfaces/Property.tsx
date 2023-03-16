@@ -25,6 +25,7 @@ export interface PropertyPricingDetails {
 
 export type Review = {
     review_id: number;
+    review_by: User;
     review_text: string;
 };
 

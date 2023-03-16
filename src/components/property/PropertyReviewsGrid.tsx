@@ -6,7 +6,6 @@ import {
     ListItem,
     ListItemAvatar,
     ListItemText,
-    TextField,
     Typography,
 } from '@mui/material';
 import Grid from '@mui/material/Grid';
@@ -55,7 +54,7 @@ export const PropertyReviewsGrid = (props: PropertyReviews) => {
                 >
                     {duo.map((x, j) => {
                         return (
-                            <Grid item xs={12} lg={6} key={j}>
+                            <Grid item xs={12} md={6} key={j}>
                                 <List
                                     sx={{
                                         width: '100%',
@@ -81,7 +80,7 @@ export const PropertyReviewsGrid = (props: PropertyReviews) => {
                                                         variant="body1"
                                                         color="text.primary"
                                                     >
-                                                        Ali Connors
+                                                        {`${x.review_by.first_name} ${x.review_by.last_name} `}
                                                     </Typography>
                                                     <Typography
                                                         variant="body1"

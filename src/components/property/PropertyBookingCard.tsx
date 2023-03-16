@@ -17,6 +17,7 @@ import { PropertyDetails } from '../../interfaces/Property';
 import { DotSpan } from '../common/DotSpan';
 import { ReviewsLink } from '../common/ReviewsLink';
 import * as Styled from './PropertyBookingCard.styles';
+import { PropertyBookingFooter } from './PropertyBookingFooter';
 import { BookingCost } from './PropertyCostBlock';
 
 export const PropertyBookingCard = ({
@@ -82,8 +83,8 @@ export const PropertyBookingCard = ({
         navigate(`/book/${id}?${formData.toString()}`);
     };
 
-    const theme = useTheme();
-   // const isLargeScreen = useMediaQuery(theme.breakpoints.up('md'));
+    // const theme = useTheme();
+    // const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
     return (
         <Styled.PropertyCalendarCard>
@@ -107,6 +108,7 @@ export const PropertyBookingCard = ({
                     </Typography>
                 </Styled.PropertyHeaderDivItem>
             </Styled.PropertyHeaderDivContainer>
+
             <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <form onSubmit={onSubmit}>
                     <Grid container spacing={2}>
