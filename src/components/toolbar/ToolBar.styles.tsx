@@ -1,5 +1,5 @@
-import styled from 'styled-components';
 import Box from '@mui/material/Box';
+import styled from 'styled-components';
 
 export const ToolBarContainer = styled(Box)`
     background-color: #fff;
@@ -9,8 +9,12 @@ export const ToolBarContainer = styled(Box)`
     //left: 5%;
     width: 100%;
     display: inline-block;
-    height: 15vh;
+    max-height: 15vh;
     z-index: 100;
+
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
 
     .toolbar {
         display: flex;
