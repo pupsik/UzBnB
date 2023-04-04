@@ -6,18 +6,15 @@ import { useNavigate } from 'react-router-dom';
 import StarRoundedIcon from '@mui/icons-material/StarRounded';
 import { Typography } from '@mui/material';
 import { TextField, MenuItem, Button, Grid } from '@mui/material';
-import { useTheme } from '@mui/material/styles';
-import useMediaQuery from '@mui/material/useMediaQuery';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { DatePicker } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import moment from 'moment';
+import dayjs from 'dayjs';
 
 import { PropertyDetails } from '../../interfaces/Property';
 import { DotSpan } from '../common/DotSpan';
 import { ReviewsLink } from '../common/ReviewsLink';
 import * as Styled from './PropertyBookingCard.styles';
-import { PropertyBookingFooter } from './PropertyBookingFooter';
 import { BookingCost } from './PropertyCostBlock';
 
 export const PropertyBookingCard = ({
@@ -27,8 +24,8 @@ export const PropertyBookingCard = ({
     pricing,
     config,
 }: PropertyDetails) => {
-    const [startDate, setStartDate] = useState<moment.Moment>(moment(null));
-    const [endDate, setEndDate] = useState<moment.Moment>(moment(null));
+    const [startDate, setStartDate] = useState<dayjs.Dayjs>(dayjs(null));
+    const [endDate, setEndDate] = useState<dayjs.Dayjs>(dayjs(null));
     const [totalNights, setTotalNights] = useState<number | null>(null);
     const [selectedGuestCount, setSelectedGuestCount] = useState<string>('0');
     const [renderCostTotal, setRenderCostTotal] = useState<boolean>(false);
@@ -57,7 +54,7 @@ export const PropertyBookingCard = ({
             const nights = endDate.diff(startDate, 'days');
 
             if (nights < 0) {
-                setStartDate(moment(null));
+                setStartDate(dayjs(null));
             } else {
                 setTotalNights(nights);
             }
@@ -72,6 +69,13 @@ export const PropertyBookingCard = ({
         }
     }, [totalNights, selectedGuestCount]);
 
+    const guestOptions = React.useMemo(() => {
+        return Array.from({ length: config.max_guests }, (_, x) => ({
+            value: `${x + 1}`,
+            label: `${x + 1} guests`,
+        }));
+    }, [config.max_guests]);
+
     const onSubmit = (event) => {
         event.preventDefault();
         const formData = new URLSearchParams({
@@ -82,9 +86,6 @@ export const PropertyBookingCard = ({
         console.log(formData);
         navigate(`/book/${id}?${formData.toString()}`);
     };
-
-    // const theme = useTheme();
-    // const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
     return (
         <Styled.PropertyCalendarCard>
@@ -136,14 +137,7 @@ export const PropertyBookingCard = ({
                                 onChange={handleSelectChange}
                                 sx={{ width: '100%' }}
                             >
-                                {[
-                                    ...Array(config.max_guests)
-                                        .fill(0)
-                                        .map((_, x) => ({
-                                            value: `${x + 1}`,
-                                            label: `${x + 1} guests`,
-                                        })),
-                                ].map((option) => (
+                                {guestOptions.map((option) => (
                                     <MenuItem
                                         key={option.value}
                                         value={option.value}

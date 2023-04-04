@@ -1,16 +1,20 @@
 import * as React from 'react';
-import StoryCard from './PropertyCard';
-import { Grid } from '@mui/material';
-import { useStore } from '../../store';
-import { useNavigate } from 'react-router-dom';
 import { useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+import { Grid } from '@mui/material';
 import { observer } from 'mobx-react-lite';
+
+import useAccessToken from '../../hooks/useAccessToken';
+import { useStore } from '../../store';
+import StoryCard from './PropertyCard';
 
 const PropertyCardList = () => {
     const { propertyStore } = useStore();
     const navigate = useNavigate();
     const [lastElement, setLastElement] = useState(null);
     const [pageNum, setPageNum] = useState(1);
+    const token = useAccessToken();
 
     const observer = useRef(
         new IntersectionObserver((entries) => {
@@ -26,8 +30,10 @@ const PropertyCardList = () => {
     };
 
     React.useEffect(() => {
-        propertyStore.getProperties();
-    }, [pageNum]);
+        if (token) {
+            propertyStore.getProperties(token);
+        }
+    }, [pageNum, token]);
 
     React.useEffect(() => {
         const currentElement = lastElement;

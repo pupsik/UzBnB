@@ -12,15 +12,17 @@
         "strictNullChecks": true,
         "strictPropertyInitialization": true,
         "jsx": "react-jsx",
-        "target": "es2016",
+        "target": "es2022",
         "sourceMap": true,
         "outDir": "./build",
         "allowSyntheticDefaultImports": true,
         "forceConsistentCasingInFileNames": true,
         "noEmit": true,
         "moduleResolution": "node",
+        "module": "es2022",
         "resolveJsonModule": true
     },
+    
     "include": ["**/*.ts", "**/*.tsx"],
     "exclude": ["node_modules", "dist"]
 }

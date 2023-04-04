@@ -1,5 +1,6 @@
-import { Auth0Provider } from '@auth0/auth0-react';
 import { useNavigate } from 'react-router-dom';
+
+import { Auth0Provider } from '@auth0/auth0-react';
 
 const Auth0ProviderWithHistory = ({ children }) => {
     const domain = process.env.REACT_APP_AUTH0_DOMAIN || '';
@@ -20,7 +21,7 @@ const Auth0ProviderWithHistory = ({ children }) => {
             audience={`https://${domain}/api/v2/`} //https://github.com/auth0/auth0-react/issues/186#issuecomment-760552089
             scope={scope}
             useRefreshTokens={true}
-            cacheLocation="localstorage"
+            cacheLocation="localstorage" // this should be dev options ONLY -- REMOVE IN PROD
         >
             {children}
         </Auth0Provider>
