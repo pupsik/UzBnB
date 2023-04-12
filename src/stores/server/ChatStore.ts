@@ -4,7 +4,6 @@ import { observable, action, computed, makeObservable } from 'mobx';
 import { v4 as uuidv4 } from 'uuid';
 
 import { Conversation } from '../../interfaces/Chat';
-// import { ChatRecord, UserChat } from '../../interfaces/Chat';
 import { Auth0User, User } from '../../interfaces/User';
 import { getRandomArbitrary, getRandomItem } from '../../utilities';
 import { ChatStoreType } from '../interfaces';
@@ -40,70 +39,6 @@ export class ChatStore implements ChatStoreType {
     setUserConversations = (conversations: Conversation[]) =>
         (this.userConversations = conversations);
 
-    // findOrCreateConversation = (roomid) => {
-    //     let conversation = this.conversations.find((x) => x.roomid === roomid);
-
-    //     // If conversation is undefined, create a new conversation and add it to the array
-    //     if (!conversation) {
-    //       const conversation: Conversation = {
-    //         roomid: roomid,
-    //         participants: [],
-    //         messages: [],
-    //       };
-    //       this.conversations.push(conversation);
-    //     }
-
-    //     return conversation;
-    //   };
-
-    // getConversation = (roomid: string): Promise<void> => {
-    //     const conversation = this.userConverstaions.find((x) => x.roomid == roomid);
-
-    //     Array.from(Array(getRandomArbitrary(0, 3))).forEach((_x, _i) => {
-    //         conversation?.messages.push({
-    //             source_email: (_i + 1) % 2 === 0 ? source_email : target_email,
-    //             target_email: (_i + 1) % 2 === 0 ? target_email : source_email,
-    //             message: faker.lorem.lines(getRandomArbitrary(1, 3)),
-    //             time: `${getRandomArbitrary(0, 24)}:${getRandomArbitrary(
-    //                 0,
-    //                 59
-    //             )}`,
-    //         });
-    //     });
-    // };
-
-    // getUserChat = (
-    //     roomid: string
-    // ): Promise<void> => {
-    //     const chat = this.conversations.find((x) => x.target_email === target_email);
-    //     const exchage: ChatRecord[] = [];
-    //     Array.from(Array(getRandomArbitrary(1, 3))).forEach((_x, _i) => {
-    //         exchage.push({
-    //             source_email: (_i + 1) % 2 === 0 ? source_email : target_email,
-    //             target_email: (_i + 1) % 2 === 0 ? target_email : source_email,
-    //             message: faker.lorem.lines(getRandomArbitrary(1, 3)),
-    //             time: `${getRandomArbitrary(0, 24)}:${getRandomArbitrary(
-    //                 0,
-    //                 59
-    //             )}`,
-    //         });
-    //     });
-
-    //     if (chat) {
-    //         chat.chat_records = exchage;
-    //     } else {
-    //         this.chats.push({
-    //             target_email: target_email,
-    //             chat_records: exchage,
-    //         });
-    //     }
-
-    //     return new Promise((resolve) => {
-    //         setTimeout(() => {
-    //             resolve();
-    //         }, 500);
-    //     });
-    // };
 
     getRandomUser = (): User => {
         const fname = faker.name.firstName();
