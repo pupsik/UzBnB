@@ -91,6 +91,7 @@ export class PropertyStore implements PropertyStoreType {
             rating: getRandomArbitrary(100, 500) / 100,
             hosted_by: {
                 user_id: getRandomArbitrary(1, 1000),
+                email: faker.internet.email(),
                 first_name: faker.name.firstName(),
                 last_name: faker.name.lastName(),
             },
