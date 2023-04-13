@@ -16,7 +16,6 @@ import api from '../../service/api';
 import { getRandomArbitrary, capitalizeFirstLetter } from '../../utilities';
 import { PropertyStoreType } from '../interfaces';
 
-
 export class PropertyStore implements PropertyStoreType {
     properties: PropertySummaries = [];
     pageSize = 8;
@@ -92,6 +91,7 @@ export class PropertyStore implements PropertyStoreType {
             rating: getRandomArbitrary(100, 500) / 100,
             hosted_by: {
                 user_id: getRandomArbitrary(1, 1000),
+                email: faker.internet.email(),
                 first_name: faker.name.firstName(),
                 last_name: faker.name.lastName(),
             },

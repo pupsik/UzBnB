@@ -8,6 +8,7 @@ import { ThemeProvider } from 'styled-components';
 import './App.css';
 import ProtectedRoute from './auth/ProtectedRoute';
 import UserAccount from './components/account/UserAccount';
+import ChatView from './components/chat/ChatView';
 import theme from './theme/ThemeProvider';
 import HomePage from './views/HomePage';
 import PropertyPage from './views/PropertyPage';
@@ -36,6 +37,14 @@ function App() {
                                 element={<PropertyPage />}
                             />
                             <Route path="/book/:id" element={<Outlet />} />
+                            <Route
+                                path="/chat"
+                                element={
+                                    <ProtectedRoute>
+                                        <ChatView />
+                                    </ProtectedRoute>
+                                }
+                            />
                             <Route
                                 path="account-settings"
                                 element={
