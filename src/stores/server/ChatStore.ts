@@ -3,7 +3,7 @@ import md5 from 'md5';
 import { observable, action, computed, makeObservable } from 'mobx';
 import { v4 as uuidv4 } from 'uuid';
 
-import { Conversation } from '../../interfaces/Chat';
+import { Conversation, Message } from '../../interfaces/Chat';
 import { Auth0User, User } from '../../interfaces/User';
 import { getRandomArbitrary, getRandomItem } from '../../utilities';
 import { ChatStoreType } from '../interfaces';
@@ -33,12 +33,21 @@ export class ChatStore implements ChatStoreType {
         makeObservable(this, {
             userConversations: observable,
             setUserConversations: action,
+            addUserMessageToRoom: action,
         });
     }
 
     setUserConversations = (conversations: Conversation[]) =>
         (this.userConversations = conversations);
 
+    addUserMessageToRoom = (roomid: string, message: Message) => {
+        const conversation = this.userConversations.find(
+            (x) => x.roomId === roomid
+        );
+        if (conversation) {
+            conversation.messages.push(message);
+        }
+    };
 
     getRandomUser = (): User => {
         const fname = faker.name.firstName();

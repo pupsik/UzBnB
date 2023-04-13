@@ -1,4 +1,4 @@
-import { Conversation } from '../interfaces/Chat';
+import { Conversation, Message } from '../interfaces/Chat';
 import {
     PropertyDetails,
     PropertyImages,
@@ -20,4 +20,5 @@ export interface PropertyStoreType {
 export interface ChatStoreType {
     userConversations: Conversation[];
     getUserConversations: (user: Auth0User) => Promise<void>;
+    addUserMessageToRoom: (roomid: string, message: Message) => void;
 }

@@ -26,7 +26,10 @@ import { useMock } from '../../stores/config';
 import * as Styled from './ChatView.styles';
 
 const ChatView = () => {
-    const [selectedIndex, setSelectedIndex] = React.useState(1);
+    // const [selectedIndex, setSelectedIndex] = React.useState(1);
+    const [currentRoomId, setCurrentRoomId] = React.useState<string | null>(
+        null
+    );
     const [activeUser, setActiveUser] = React.useState<User | null>(null);
     const [currentConverstaion, setCurrentConversation] = React.useState<
         Conversation[]
@@ -68,8 +71,15 @@ const ChatView = () => {
         if (socket && chatMessage) {
             socket.emit('message', { room: 'room1', msg: chatMessage });
             // Update chat history
+            const message: Message = {
+                senderEmail: user?.email || '',
+                content: chatMessage,
+                timestamp: new Date().toISOString(),
+            };
 
-            // Remove text from the text field
+            if (currentRoomId) {
+                chatStore.addUserMessageToRoom(currentRoomId, message);
+            }
             setChatMessage('');
         }
     };
@@ -77,12 +87,7 @@ const ChatView = () => {
     const handleListItemClick = (
         event: React.MouseEvent<HTMLDivElement, MouseEvent>
     ) => {
-        const idx = chatStore.userConversations.findIndex(
-            (x) => x.roomId === event.currentTarget.id
-        );
-        if (idx) {
-            setSelectedIndex(idx);
-        }
+        setCurrentRoomId(event.currentTarget.id);
     };
 
     const onChatMessageChange = (event) => setChatMessage(event.target.value);
@@ -124,49 +129,50 @@ const ChatView = () => {
                     </Grid>
                     <Divider />
                     <List>
-                        {chatStore.userConversations.map(
-                            (u: Conversation, i: number) => {
-                                return (
-                                    <ListItemButton
-                                        key={`${u.roomId}`}
-                                        id={`${u.roomId}`}
-                                        selected={selectedIndex === i}
-                                        sx={{
-                                            backgroundColor:
-                                                selectedIndex === i
-                                                    ? 'rgba(0, 0, 255, 0.1)'
-                                                    : 'inherit', // Change the background color based on the selected state
-                                        }}
-                                        onClick={(event) =>
-                                            handleListItemClick(event)
-                                        }
+                        {chatStore.userConversations.map((u: Conversation) => {
+                            const selected = currentRoomId === u.roomId;
+                            return (
+                                <ListItemButton
+                                    key={`${u.roomId}`}
+                                    id={`${u.roomId}`}
+                                    selected={selected}
+                                    sx={{
+                                        backgroundColor:
+                                            currentRoomId === u.roomId
+                                                ? 'rgba(0, 0, 255, 0.1)'
+                                                : 'inherit', // Change the background color based on the selected state
+                                    }}
+                                    onClick={(event) =>
+                                        handleListItemClick(event)
+                                    }
+                                >
+                                    <ListItemIcon>
+                                        <Avatar
+                                            alt={`${u.otherUser.first_name} ${u.otherUser.last_name}`}
+                                            src={`${u.otherUser.avatar}`}
+                                        />
+                                    </ListItemIcon>
+                                    <ListItemText
+                                        primary={`${u.otherUser.first_name} ${u.otherUser.last_name}`}
                                     >
-                                        <ListItemIcon>
-                                            <Avatar
-                                                alt={`${u.otherUser.first_name} ${u.otherUser.last_name}`}
-                                                src={`${u.otherUser.avatar}`}
-                                            />
-                                        </ListItemIcon>
-                                        <ListItemText
-                                            primary={`${u.otherUser.first_name} ${u.otherUser.last_name}`}
-                                        >
-                                            {`${u.otherUser.first_name} ${u.otherUser.last_name}`}
-                                        </ListItemText>
-                                        <ListItemText
-                                            secondary="online"
-                                            sx={{ align: 'right' }}
-                                        ></ListItemText>
-                                    </ListItemButton>
-                                );
-                            }
-                        )}
+                                        {`${u.otherUser.first_name} ${u.otherUser.last_name}`}
+                                    </ListItemText>
+                                    <ListItemText
+                                        secondary="online"
+                                        sx={{ align: 'right' }}
+                                    ></ListItemText>
+                                </ListItemButton>
+                            );
+                        })}
                     </List>
                 </Grid>
                 <Grid item xs={9}>
                     <Styled.MessageList>
-                        {chatStore.userConversations[selectedIndex]?.messages.map((message: Message, i: number)=> {
-                            return (
-                                <ListItem key={`${i}`}>
+                        {chatStore.userConversations
+                            .find((x) => x.roomId === currentRoomId)
+                            ?.messages.map((message: Message, i: number) => {
+                                return (
+                                    <ListItem key={`${i}`}>
                                         <Grid container>
                                             <Grid item xs={12}>
                                                 <ListItemText
@@ -180,8 +186,8 @@ const ChatView = () => {
                                             </Grid>
                                         </Grid>
                                     </ListItem>
-                            );
-                        })}
+                                );
+                            })}
                     </Styled.MessageList>
                     <Divider />
                     <Grid container style={{ padding: '20px' }}>
