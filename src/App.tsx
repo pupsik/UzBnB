@@ -1,4 +1,4 @@
-import { Outlet, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 
 import { useAuth0 } from '@auth0/auth0-react';
 import { ThemeProvider as MuiThemeProvider } from '@mui/material/styles';
@@ -12,6 +12,7 @@ import theme from './theme/ThemeProvider';
 import HomePage from './views/HomePage';
 import PropertyPage from './views/PropertyPage';
 import UserProfile from './views/UserProfilePage';
+import BookingPage from './views/BookingPage';
 
 // Injecting themes and making them available to styled components
 // https://medium.com/@abdurakhimov.sardor/how-to-use-and-customize-material-ui-version-5-with-styled-components-295e62562e61
@@ -35,7 +36,10 @@ function App() {
                                 path="/property/:id"
                                 element={<PropertyPage />}
                             />
-                            <Route path="/book/:id" element={<Outlet />} />
+                            <Route
+                                path="/book/:id"
+                                element={<BookingPage />}
+                            />
                             <Route
                                 path="account-settings"
                                 element={
